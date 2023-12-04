@@ -1,0 +1,126 @@
+Overview of Kubernetes 
+- What is Kubernetes 
+	- From Google, released to CNCF (cloud native computing foundation) and became defacto standard for container archtestration 
+	- Def : "Kubernetes is an open-source container(*) orchestration(*) system for automating software deployment, scaling, and management"
+		- Understand containers
+		- Understand orchestration
+- What kunernetes is NOT
+	- will revisit later
+	
+	
+Containers- 
+	- Why do we need containers?
+		- compatibility issue (matrix of hell)
+		- long setup time
+		- difference in dev, test and prod env
+		
+	- 2 objectives 
+		- remove dependency on OS and hardware
+		- remove compatibility dependency of tenants 
+
+	- def: Isolated environement with it's own 
+		- processes 
+		- network
+		- services
+		- mounts 
+	   but dependent on OS Kernel 	
+ 
+How containers works-
+ 	- Understand how different flavours of OS (redhat, ubuntu, centos etc) work
+ 		- Linux kernel manages the hardware
+ 		- the distros use same kernel but pack different softwares / tools on top of kernel 
+ 			- drivers 
+ 			- filemanagers
+ 			- GUI
+ 			- dev tools 
+ 			- compilers etc 
+ 	- containers can run any "guest OS" based container on top of "host OS" provided it is same kernel 
+ 		- e.g. can run image of centos on ubuntu os 
+ 		- you can't run windows OS based container on linux kernel 
+ 	- containers purpose if not to run another kernel on other kernel e.g. run linux on windows machine
+ 		- for this use virtualization tools like hypervisor (e.g. virtual box)
+ 		
+Containers vs Virtual Machine-
+	- virtual machines : hardware -> host OS -> hypervisor -> guest os1 -> your taste
+											 -> guest os2 -> your taste
+											 
+	- containers: hardware -> host OS -> container runtime -> container1 (trimmed os layer + dependecies + libraries + applicaion)
+											 -> container2 (trimmed os layer + dependecies + libraries + applicaion)	  
+ 		
+	- VMs are 
+		- bulky, high on resource utilization like CPU, storage etc.
+		- need full OS e.g. Ubuntu desktop ISO is 4+ Gi
+		- full OS is booted
+		- NOT dependent on host kernel i.e. you can run linux on windows OS
+	
+	- Containers are 
+		- lightweight on resources 
+		- use layers technology, so the images are in MBs
+			- if you have say ubuntu image and next container image is built on it, same image is not downloaded again 
+		- boots fast 
+		- dependent on host kernel, so can't have windows container on linux host
+		
+Modern scenario 
+	- most of the s/w are now containerized and stored in registry
+		- you just need to know the image name and tag
+	- examples
+		- docker run nginx
+		- docker run postgres
+		- docker run postgres 
+		- docker run mssql
+		- docker run nodejs
+		- docker run mongodb
+	- if you need to scale, just create one more container (completely isolated running instance of the image)
+		- image is not downloaded again 
+	- if a container is failed, simply destroy it and create new one
+	- app developers containerize the applications 
+		- create Dockerfile on top of existing images like nodejs
+		- all libraries and dependencies are taken care of in Dockerfile
+	- ops team can run the container 
+		- need not worry about dependencies, libraries, conflicts etc. 
+	
+Container Orchestration
+	- You have containerized the application and happily running it in PROD
+	- how do you scale it - up and down 
+	- how to manage communication / networking across your container, database container, cache container like redis. message queue container etc
+	
+	- def: Automatically deploy and manage containers is orchestration
+		- not one or two but 100s and 1000s of containers 
+		
+	- options 
+		- docker swarm
+			- easy to start 
+			- doesn't support complex scenarios   
+		- kunernetes
+			- little difficult to start
+			- backed by Google and huge community 
+			- huge 3rd party support 
+		- Apache Mesos 
+			- Complicated 
+			- can manage high complex scenarios 
+
+What is Kubernetes -
+	- def: "open source container orchestration technology to deploy and manage 100s of 1000s of containers in clustered environement"   
+
+Advantages of Kubernetes-
+	- Highly available (by design) 
+		- can scale massively 
+		- can auto heal
+	- Load balances across containers 
+	- If harware becomes contraints, bring up new nodes 
+	- all is done declaratively 
+		- you just say what is needed 
+		- K8S get it done
+
+What Kubernetes is NOT-
+
+
+
+
+
+		
+	
+	 
+	
+	   
+	

@@ -1,0 +1,46 @@
+Kubernetes for beginners 
+	Pre-requisites
+		- Containers
+		- Orchestration
+		- YAML
+		
+	Learning Objectives for this couse 
+	 - Basics of docker and Kubernetes
+	 - Setup lab 
+	 	- local
+	 	- GCP VM
+	 		- minikube
+	 		- multi node using kubeadm (advanced)
+	 	- GKE
+	 	- AWS using kops (optional)
+	 - YAML introduction
+	 - Pods
+	 - Replicas and replicasets
+	 - Deployments
+	 - Services
+	 - Networking basics
+	 - Microservices architecture 
+	 - Demo application
+
+Kubernetes Certified Developer
+	- Core Concepts
+	- Configmaps, Secrets 
+	- Multi container pods
+	- Readiness and Liveliness probes 
+	- Logging and monitoring
+	- Pod design 
+	- Services and service accounts 
+	- Jobs 
+	- Demos 
+	
+Kunernetes Administration
+	- High Availability clusters for production
+	- Scheduling 
+	- Logging & monitoring
+	- Maintainence 
+	- Security 
+	- Troubleshooting
+	- Core concepts 
+	- Demos
+	 
+	 
