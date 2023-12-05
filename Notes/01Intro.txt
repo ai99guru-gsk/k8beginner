@@ -115,12 +115,51 @@ Advantages of Kubernetes-
 What Kubernetes is NOT-
 
 
+Imp terms-
+	- Node: physical or VM on which K8 components are installed 
+		- Control plane (master node): where key components of K8 are installed (API Server, Scheduler, Controller, etcd)
+			- Controls all operations like scheduling, scaling, tracking and monitoring  
+		- Worker nodes / Minions: where container runtime is installed
+			- kubectl, kubeproxy, container runtimes
+	- Need more than 2 nodes 
 
-
-
+Components of K8- 
+	- API Server
+		- Acts as the front end for K8. 
+		- All operations are routed through this, users or external world (Kubectl) interacts with API server
+	- Scheduler
+		- Identify the node which can be assigned work by looking at healthy and resouceful node 
+	- Controller 
+		- makes the decisions
+		- monitors all nodes and reponsible for bringing new nodes when needed 
+	- ETCD 
+		- Highly available (distributed) key value store
+		- holds all information about entire cluster in realtime
+			- which node, what they do etc
+			- holds the lock so conflicts can be avoided  
+	- Kubelet
+		- Agent inside worker node
+		- listens to API server and respond with health of the node 
+		- can take up the work 
+	- Container runtime
+		- creates containers 
+	- Kubeproxy 
+		- responsible for networking within cluster 
+		- makes sure pods can communicate 
 		
-	
-	 
-	
-	   
+** Word of caution 
+	- Kubernetes had deprectated docker 
+		- Docker = Containerd (CRI compliant) + Cli + API + Build + Volume + Auth + Security
+		- K8 needs only one component of docker i.e. docker daemon 
+		- K8 first stated with docker 
+		- Docker was created way before K8 and had different problem to solve 
+			- Docker doesn't stick to CRI (container runtime interface) 
+				- it sticks to images specs but not runtime specs 
+		- K8 needs CRI specs compliant to support any container runtimes like roket etc 
+		- K8 provides support to docker via docker shim which was overhead
+			- K8 dropped this support from v1.24 onwards 
+	- No Impact on us 
+		- any Docker image which runs inside docker can run in K8 
+		  	
+
 	
