@@ -1,0 +1,47 @@
+- Sample app 
+    - create workspace folder
+    - create app folder
+    - create venv
+        - if on ubuntu, you need to install venv: apt install python3.10-venv
+        - python3 -m venv venv
+        - source venv/bin/activate
+        - pip insatll flask
+        - pip list
+        - pip freeze > requirements.txt 
+    - create flask hello world app (refer app.py)
+    - run it locally 
+    - create a dockerfile
+    - build and run docker
+        - docker build -t flask-app .    # it is preferable to build with tag e.g. flask-app:1.0.0
+        - docker images
+        - docker run -d --name flask-app:tag -p 5000:5000 flask-app
+            - -p [hostip]:[hostport]:[containerport]
+
+- Push sample app to docker hub
+    - docker ps -a # this is to see the container id for our flask-app container
+    - tag the image before push 
+        - docker container commit <containerid> flask-app:1.0.0
+        - docker images will show that the image has been tagged with 1.0.0
+
+    - Ready for push
+        - Log in on https://hub.docker.com/
+        - Click on Create Repository.
+        - Choose a name and a description for your repository and click Create. e.g. flask-app
+        - Log into the Docker Hub from the command line
+            - docker login --username=yourhubusername --email=youremail@company.com
+        - Tab image (the one with tag) for dockerhub
+            - docker tag flask-app:1.0.0 yourhubusername/imagename:tag
+            - docker push gsklean108/flask-app:1.0.0
+        - Verify in dockerhub     
+
+
+Excercise - 
+ - Delete the repo from dockerhub
+ - Clean local images for flask-app
+ - recreate this whole piece 
+    - build, run and push image to dockerhub
+
+Note for git push (to use personal access token)
+  - log into github from browser 
+  - settings -> Developer Settings -> Generate new personal access token
+  - use this everywhere password is asked  
