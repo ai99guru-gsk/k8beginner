@@ -44,4 +44,9 @@ Excercise -
 Note for git push (to use personal access token)
   - log into github from browser 
   - settings -> Developer Settings -> Generate new personal access token
-  - use this everywhere password is asked  
+  - use this everywhere password is asked
+
+IF you want to store this access token
+ - git config --global credential.helper store
+ - attempt to push and provide username and access token 
+ - once done, it will not ask next time  
